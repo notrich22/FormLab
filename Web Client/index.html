@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web client</title>
+</head>
+<body>
+    <h1>Web client for pong-app</h1>
+    <iframe src="https://localhost:7127/files">
+        <h1>List of files:</h1>
+    </iframe>
+    <form action="https://localhost:7127/rename" method="post">
+        <label>Old name:</label>
+        <input name="oldName" type="text">
+        <label>New name:</label>
+        <input name="newName" type="text">
+        <button>Rename</button>
+    </form>
+    <form action="https://localhost:7127/download" method="get">
+        <label>File name:</label>
+        <input name="FileName" type="text">
+        <button>Download file</button>
+    </form>
+    <form action="https://localhost:7127/upload" method="post">
+        <input type="file" name="uploadedFile" >
+        <button>Upload file</button>
+    </form>
+</body>
+</html>
