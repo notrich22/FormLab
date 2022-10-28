@@ -4,6 +4,8 @@ using System.IO;
 using System.Xml.Linq;
 using static System.Net.WebRequestMethods;
 
+List<string> files = new List<string>();
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -12,7 +14,7 @@ app.MapGet("/ping", async() => "pong!");
 async Task UploadFile(HttpContext context)
 {
     var file = context.Request.Form["file"];
-
+    files.Add(file);
 }
 
 app.MapGet("/download", async(context) =>
@@ -32,7 +34,19 @@ app.MapGet("/download", async(context) =>
 
 app.MapGet("/files", async(context) =>
 {
-    string[] allfiles = Directory.GetFiles(@".\Repository");
+    string[] temp = Directory.GetFiles(@".\Repository");
+    string[] allfiles = new string[temp.Count() + files.Count];
+    int i = 0;
+    foreach(string file in temp)
+    {
+        allfiles[i] = file;
+        i++;
+    }
+    foreach (string file in files)
+    {
+        allfiles[i] = file;
+        i++;
+    }
     foreach (string filename in allfiles)
     {
         await context.Response.WriteAsync(Path.GetFileName(filename) + "\n");

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\Pong\\Pong\\Pong.csproj",
+      "projectUniqueName": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\FormLab\\Pong\\Pong.csproj",
       "projectName": "Pong",
-      "projectPath": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\Pong\\Pong\\Pong.csproj",
+      "projectPath": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\FormLab\\Pong\\Pong.csproj",
       "packagesPath": "C:\\Users\\NotRich22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\Pong\\Pong\\obj\\",
+      "outputPath": "C:\\Users\\NotRich22\\Desktop\\АКАДЕМИЯ\\ASP DOTNET\\FormLab\\Pong\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NotRich22\\AppData\\Roaming\\NuGet\\NuGet.Config",
