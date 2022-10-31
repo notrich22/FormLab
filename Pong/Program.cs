@@ -13,8 +13,21 @@ app.MapGet("/ping", async() => "pong!");
 
 async Task UploadFile(HttpContext context)
 {
-    var file = context.Request.Form["file"];
-    files.Add(file);
+    try
+    {
+        IFormFile file = context.Request.Form.Files[0];
+        var originalFileName = Path.GetFileName(file.FileName);
+        var uniqueFileName = Path.GetRandomFileName();
+        var uniqueFilePath = Path.Combine(@$".\Repository\", uniqueFileName);
+        using (var stream = System.IO.File.Create(uniqueFilePath))
+        {
+            await file.CopyToAsync(stream);
+        }
+    }catch(Exception e)
+    {
+        Console.WriteLine(e.Message + ", Something went wrong while uploading file");
+    }
+    //files.Add(filename);
 }
 
 app.MapGet("/download", async(context) =>
@@ -34,19 +47,7 @@ app.MapGet("/download", async(context) =>
 
 app.MapGet("/files", async(context) =>
 {
-    string[] temp = Directory.GetFiles(@".\Repository");
-    string[] allfiles = new string[temp.Count() + files.Count];
-    int i = 0;
-    foreach(string file in temp)
-    {
-        allfiles[i] = file;
-        i++;
-    }
-    foreach (string file in files)
-    {
-        allfiles[i] = file;
-        i++;
-    }
+    string[] allfiles = Directory.GetFiles(@".\Repository");
     foreach (string filename in allfiles)
     {
         await context.Response.WriteAsync(Path.GetFileName(filename) + "\n");
